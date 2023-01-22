@@ -11,13 +11,14 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncremente: true
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
-    life: {
+    hp: {
       type: DataTypes.INTEGER,
     },
     attack: {

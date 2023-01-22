@@ -1,13 +1,63 @@
-const { getPokemons, getPokemonsWithStats } = require('./Util/GetApi.js')
+const { Pokemon } = require('../db')
+
+const { getPokemonsWithStats } = require('./Util/GetApi.js')
 
 
 /* Get all pokemons */
 
 const getAllPokemons = async () =>{
-    const pokemons = await getPokemonsWithStats()
+    const pokemonsApi = await getPokemonsWithStats()
+    const pokemonsDb = await Pokemon.findAll({
+        attributes: ["name", "hp", "attack", "defense", "speed", "height", "weight"]
+    })
+    
+    const pokemons = [...pokemonsApi, ...pokemonsDb]
     return pokemons
 }
 
-module.exports  = getAllPokemons;
+/* Get pokemon for id */
 
-getAllPokemons()
+const getPokemonForId = async (id) => {
+    const pokemons = await getAllPokemons()
+    const pokemon = pokemons[id]
+    if (pokemon !== undefined){
+        return pokemon
+    } else {
+        throw new Error("This Pokemon does not exist")
+    }
+}
+
+/* Get pokemon for query name */
+
+const getPokemonForName = async (name) => {
+    const pokemons = await getAllPokemons()
+    const pokemon = pokemons.find(pokemon => pokemon.name === name)
+    if (pokemon !== undefined){
+        return pokemon
+    } else {
+        throw new Error("This Pokemon does not exist")
+    }
+}
+
+/* Post new pokemon */
+
+const postPokemon = async (name, hp, attack, defense, speed, height,  weight) =>{
+    const newPokemon = await Pokemon.create({
+        name,
+        hp,
+        attack, 
+        defense, 
+        speed, 
+        height,  
+        weight
+    })
+
+    return newPokemon
+}
+
+module.exports  = {
+    getAllPokemons, 
+    postPokemon,
+    getPokemonForId,
+    getPokemonForName
+};
