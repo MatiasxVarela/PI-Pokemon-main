@@ -26,7 +26,7 @@ routerPokemons.get('/:id', async (req,res )=> {
     const { id } =  req.params
 
     try {
-        const pokemon = await getPokemonForId(id - 1)
+        const pokemon = await getPokemonForId(id)
         res.json(pokemon)
     } catch (error) {
         res.status(400).json({err: error.message})

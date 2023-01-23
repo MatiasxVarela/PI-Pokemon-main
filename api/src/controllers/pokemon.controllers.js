@@ -8,7 +8,7 @@ const { getPokemonsWithStats } = require('./Util/GetApi.js')
 const getAllPokemons = async () =>{
     const pokemonsApi = await getPokemonsWithStats()
     const pokemonsDb = await Pokemon.findAll({
-        attributes: ["name", "hp", "attack", "defense", "speed", "height", "weight"]
+        attributes: ["id","name", "hp", "attack", "defense", "speed", "height", "weight"]
     })
     
     const pokemons = [...pokemonsApi, ...pokemonsDb]
@@ -19,7 +19,7 @@ const getAllPokemons = async () =>{
 
 const getPokemonForId = async (id) => {
     const pokemons = await getAllPokemons()
-    const pokemon = pokemons[id]
+    const pokemon = pokemons.find(pokemon => pokemon.id == (id))
     if (pokemon !== undefined){
         return pokemon
     } else {
@@ -42,7 +42,9 @@ const getPokemonForName = async (name) => {
 /* Post new pokemon */
 
 const postPokemon = async (name, hp, attack, defense, speed, height,  weight) =>{
+    const pokemonsLength = (await getAllPokemons()).length
     const newPokemon = await Pokemon.create({
+        id: pokemonsLength + 1,
         name,
         hp,
         attack, 
