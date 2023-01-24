@@ -22,7 +22,7 @@ const apiToDb = async () => {
 
 const getTypes = async () => {
     const types = await PokemonType.findAll({
-        attributes: ["name"]
+        attributes: ["id","name"]
     })
     return types
 }

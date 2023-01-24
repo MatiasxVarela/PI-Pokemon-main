@@ -12,6 +12,10 @@ module.exports =  (sequelize) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       },
+    sprite: {
+      type: DataTypes.STRING,
+      defaultValue: "https://i0.wp.com/www.alphr.com/wp-content/uploads/2016/07/whos_that_pokemon.png?resize=1280%2C720&ssl=1"
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

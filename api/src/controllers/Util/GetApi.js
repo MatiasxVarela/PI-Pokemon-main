@@ -24,11 +24,11 @@ const getPokemonsWithStats = async () => {
         speed: data.data.stats[5].base_stat,
         height: data.data.height,
         weight: data.data.weight,
-        type1: data.data.types[0].type.name,
+        pokemonTypes: []
     }
 
-    data.data.types.forEach((element, index) => {
-        pokemon["type" + (index + 1)] = element.type.name
+    data.data.types.forEach((element) => {
+        pokemon.pokemonTypes.push({name: element.type.name})  
     });
 
     return pokemon

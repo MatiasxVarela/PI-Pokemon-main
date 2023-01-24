@@ -1,14 +1,20 @@
-const { Pokemon } = require('../db')
+const { Pokemon, PokemonType } = require('../db')
 
 const { getPokemonsWithStats } = require('./Util/GetApi.js')
-
 
 /* Get all pokemons */
 
 const getAllPokemons = async () =>{
     const pokemonsApi = await getPokemonsWithStats()
     const pokemonsDb = await Pokemon.findAll({
-        attributes: ["id","name", "hp", "attack", "defense", "speed", "height", "weight"]
+        attributes: ["id","name","sprite", "hp", "attack", "defense", "speed", "height", "weight"],
+        include: [{
+            model: PokemonType,
+            attributes: ["name"],
+            through: {
+                attributes: []
+            }
+        }]
     })
     
     const pokemons = [...pokemonsApi, ...pokemonsDb]
@@ -41,7 +47,16 @@ const getPokemonForName = async (name) => {
 
 /* Post new pokemon */
 
-const postPokemon = async (name, hp, attack, defense, speed, height,  weight) =>{
+const postPokemon = async (name, hp, attack, defense, speed, height,  weight, types) =>{
+    if (name === undefined) throw new Error("name is not defined")
+    if (hp === undefined) throw new Error("hp is not defined")
+    if (attack === undefined) throw new Error("attack is not defined")
+    if (defense === undefined) throw new Error("defense is not defined")
+    if (speed === undefined) throw new Error("speed is not defined")
+    if (height === undefined) throw new Error("heigth is not defined")
+    if (weight === undefined) throw new Error("weight is not defined")
+    if (types === undefined || types.length === 0) throw new Error("types is not defined")
+
     const pokemonsLength = (await getAllPokemons()).length
     const newPokemon = await Pokemon.create({
         id: pokemonsLength + 1,
@@ -51,10 +66,18 @@ const postPokemon = async (name, hp, attack, defense, speed, height,  weight) =>
         defense, 
         speed, 
         height,  
-        weight
+        weight,
     })
 
-    return newPokemon
+    types.forEach(async (type) => {
+        const pokeType = await PokemonType.findOne({
+            where: {name: type},
+            default: {name}
+          });
+          await newPokemon.addPokemonType(pokeType);
+    });
+
+    return {newPokemon, types: types}
 }
 
 module.exports  = {
