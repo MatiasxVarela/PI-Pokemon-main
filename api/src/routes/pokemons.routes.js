@@ -36,10 +36,10 @@ routerPokemons.get('/:id', async (req,res )=> {
 /* Post pokemon */
 
 routerPokemons.post('/', async (req,res )=> {
-    const { name, hp, attack, defense, speed, height,  weight, types} = req.body
+    const { name,sprite, hp, attack, defense, speed, height,  weight, types} = req.body
 
     try {
-        const pokemon = await postPokemon(name, hp, attack, defense, speed, height, weight, types)
+        const pokemon = await postPokemon(name, sprite, hp, attack, defense, speed, height, weight, types)
         res.json(pokemon)
     } catch (error) {
         res.status(400).json({err: error.message})

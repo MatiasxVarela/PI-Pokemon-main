@@ -47,7 +47,7 @@ const getPokemonForName = async (name) => {
 
 /* Post new pokemon */
 
-const postPokemon = async (name, hp, attack, defense, speed, height,  weight, types) =>{
+const postPokemon = async (name,sprite, hp, attack, defense, speed, height,  weight, types) =>{
     if (name === undefined) throw new Error("name is not defined")
     if (hp === undefined) throw new Error("hp is not defined")
     if (attack === undefined) throw new Error("attack is not defined")
@@ -60,7 +60,8 @@ const postPokemon = async (name, hp, attack, defense, speed, height,  weight, ty
     const pokemonsLength = (await getAllPokemons()).length
     const newPokemon = await Pokemon.create({
         id: pokemonsLength + 1,
-        name,
+        name: name.toLowerCase(),
+        sprite,
         hp,
         attack, 
         defense, 
