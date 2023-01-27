@@ -7,7 +7,8 @@ export default function PokemonInfo() {
     const [pokemon, setPokemon] = useState({});
     const location = useLocation()
     const query = new URLSearchParams(location.search)
-    const name = query.get("name").toLowerCase()
+    let name = query.get("name")
+    if (name !== null) name = name.toLowerCase()
     const id = query.get("id")
     let url;
 

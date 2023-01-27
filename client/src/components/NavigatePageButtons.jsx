@@ -15,7 +15,7 @@ export default function NavigatePageButtons() {
         { pageId > 1 && <PageButton id={pageId - 1} textButton={pageId - 1}></PageButton>}
         <PageButton id={pageId} textButton={pageId}></PageButton>
         { pageId < LastPage && <PageButton id={pageId + 1} textButton={pageId + 1}></PageButton>}
-        { pageId < (LastPage - 1) && <PageButton id={12} textButton={">>"}></PageButton>}
+        { pageId < (LastPage - 1) && <PageButton id={LastPage} textButton={">>"}></PageButton>}
     </div>
     );
  }

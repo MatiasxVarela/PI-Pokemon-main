@@ -1,7 +1,8 @@
-import { getPageId, orderPokemonsInReverse, pokemonsSortedAlphabetically } from "../redux/actions";
+import { getPageId, orderPokemonsInReverse, pokemonsSortedAlphabetically, getUserCreatedPokemons, resetAllFilters } from "../redux/actions";
 import React from "react";
 import NavigatePageButtons from "./NavigatePageButtons";
 import PokemonCard from "./PokemonCard";
+import SelecPokemonType from "./SelectPokemonType";
 import { useEffect} from "react";
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
@@ -16,16 +17,28 @@ export default function InitialPage () {
     },[id, dispatch])
 
     const orderInReverse = () => {
-        dispatch(orderPokemonsInReverse(pokemons))
+        dispatch(orderPokemonsInReverse())
     }
+    
     const orderInAlphabetically = () => {
-        dispatch(pokemonsSortedAlphabetically(pokemons))
+        dispatch(pokemonsSortedAlphabetically())
+    }
+
+    const pokemonsCreatedByUser = () => {
+        dispatch(getUserCreatedPokemons())
+    }
+
+    const resetPageFilters = () => {
+        dispatch(resetAllFilters())
     }
 
     return (
     <div>
+        <button onClick={resetPageFilters}>Reset all filters</button>
         <button onClick={orderInReverse}>Order in reverse</button>
         <button onClick={orderInAlphabetically}>Order in Alphabetically</button>
+        <button onClick={pokemonsCreatedByUser}>User pokemons</button>
+        <SelecPokemonType></SelecPokemonType>
         <h1>initial page</h1>
         <h2>{`Estas parado en: /home/${id}`}</h2>
         {pokemons.length > 12 && <NavigatePageButtons></NavigatePageButtons>}

@@ -1,7 +1,7 @@
 import './App.css';
 import InitialPage from './components/InitialPage';
 import PokemonInfo from './components/PokemonInfo';
-import { getAllPokemons, getPokemonsInOrder } from "./redux/actions/index";
+import { getAllPokemons, getPokemonsInOrder, getPokemonsTypes } from "./redux/actions/index";
 import Home from './components/Home';
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ function App() {
 
     useEffect(() => {
       dispatch(getAllPokemons())
+      dispatch(getPokemonsTypes())
   },[dispatch])
 
     useEffect(() => {
