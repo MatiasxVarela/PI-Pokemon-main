@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector} from "react-redux";
-import { useEffect } from "react";
 import PageButton from "./PageButton"
 
 export default function NavigatePageButtons() {

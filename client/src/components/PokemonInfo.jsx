@@ -1,6 +1,5 @@
-import userEvent from "@testing-library/user-event";
 import { useLocation } from 'react-router-dom'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import InfoCard from "./InfoCard";
 
 export default function PokemonInfo() {
@@ -10,18 +9,18 @@ export default function PokemonInfo() {
     let name = query.get("name")
     if (name !== null) name = name.toLowerCase()
     const id = query.get("id")
-    let url;
+    const url = useRef(null);
 
     useEffect(() => {
         if (name !== null){
-            url = `http://localhost:3001/pokemons?name=${name}`
+            url.current = `http://localhost:3001/pokemons?name=${name}`
          } else if (id !== null){
-             url = `http://localhost:3001/pokemons/${id}`
+             url.current = `http://localhost:3001/pokemons/${id}`
          }
-        fetch(url)
+        fetch(url.current)
             .then((response) => response.json())
             .then((data) => setPokemon(data));
-      }, []);
+      }, [id,name]);
 
     return (
     <div>

@@ -68,6 +68,7 @@ const reducer = (state = initialState, action) => {
             pokemonsInOrder: arraySortedByValues(state.pokemons, { ...state.pokemonsSortValues, types: action.payload})
           }
         }
+        
         case GET_USER_CREATED_POKEMONS:
           if (state.pokemonsSortValues.CreatedByUser === false){
             return {

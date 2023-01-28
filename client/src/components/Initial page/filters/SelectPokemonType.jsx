@@ -1,7 +1,6 @@
 import React from "react";
-import { orderPokemonsForType } from "../redux/actions";
+import {  orderPokemonsForType } from "../../../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
 
 export default function SelecPokemonType() {
     const types = useSelector(store => store.types)
