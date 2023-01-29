@@ -7,7 +7,8 @@ import {
   GET_USER_CREATED_POKEMONS,
   RESET_ALL_FILTERS,
   GET_POKEMONS_TYPES,
-  ORDER_POKEMONS_FOR_TYPE
+  ORDER_POKEMONS_FOR_TYPE,
+  ORDER_POKEMONS_FOR_MAX_ATTACK
 } from "../actions";
 
 import { arraySortedByValues } from "./reduceDependency";
@@ -20,6 +21,7 @@ const initialState = {
     types: [],
     pokemonsSortValues: {
       alphabetically: false,
+      attack: false,
       types: "anyType",
       id: true,
       reverse: false,
@@ -73,7 +75,7 @@ const reducer = (state = initialState, action) => {
           if (state.pokemonsSortValues.CreatedByUser === false){
             return {
               ...state,
-              pokemonsSortValues: { ...state.pokemonsSortValues,CreatedByUser: true},
+              pokemonsSortValues: { ...state.pokemonsSortValues, CreatedByUser: true},
               pokemonsInOrder: arraySortedByValues(state.pokemons, {...state.pokemonsSortValues, CreatedByUser: true})
             }
           }  else {
@@ -81,6 +83,21 @@ const reducer = (state = initialState, action) => {
               ...state,
               pokemonsSortValues: { ...state.pokemonsSortValues,CreatedByUser: false},
               pokemonsInOrder: arraySortedByValues(state.pokemons, {...state.pokemonsSortValues, CreatedByUser: false})
+            }
+          }
+
+          case ORDER_POKEMONS_FOR_MAX_ATTACK: 
+          if (state.pokemonsSortValues.attack === false){
+            return {
+              ...state,
+              pokemonsSortValues: { ...state.pokemonsSortValues, alphabetically: false, id: false, attack: true},
+              pokemonsInOrder: arraySortedByValues(state.pokemons, { ...state.pokemonsSortValues, alphabetically: false, id: false, attack: true })
+            }
+          } else {
+            return {
+              ...state,
+              pokemonsSortValues: { ...state.pokemonsSortValues, attack: false, id: true},
+              pokemonsInOrder: arraySortedByValues(state.pokemons, { ...state.pokemonsSortValues, attack: false, id: true})
             }
           }
 
@@ -103,8 +120,8 @@ const reducer = (state = initialState, action) => {
           if (state.pokemonsSortValues.alphabetically === false){
             return {
               ...state,
-              pokemonsSortValues: { ...state.pokemonsSortValues, alphabetically: true, id: false},
-              pokemonsInOrder: arraySortedByValues(state.pokemons, { ...state.pokemonsSortValues, alphabetically: true, id: false})
+              pokemonsSortValues: { ...state.pokemonsSortValues, alphabetically: true, id: false, attack: false},
+              pokemonsInOrder: arraySortedByValues(state.pokemons, { ...state.pokemonsSortValues, alphabetically: true, id: false, attack: false })
             }
           }else{
             return {

@@ -44,6 +44,7 @@ export default function PokemonCard(props) {
                 <CardImg src={props.sprite} alt="" />
                 {!!props.pokemonTypes && !props.pokemonTypes[1] && <p>{`Type: ${props.pokemonTypes[0].name}.`}</p>}
                 {!!props.pokemonTypes && !!props.pokemonTypes[1] && <p>{`Type: ${props.pokemonTypes[0].name}, ${props.pokemonTypes[1].name}.`}</p>}
+                <p>{`Attack: ${props.attack}`}</p>
             </CardLink>
         </CardDiv>
     );

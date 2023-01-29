@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector} from "react-redux";
 import PageButton from "./PageButton";
 import styled from "styled-components";
+import { goToTop } from "../../../Util/goToTop";
 
 const CurrentPageButton = styled.button`
     &:hover{
@@ -26,14 +27,6 @@ export default function NavigatePageButtons() {
     const pageId = useSelector(state => state.pageId)
     const pokemonsLength = useSelector((state) => state.pokemons).length
     const LastPage = Math.ceil(pokemonsLength / 12)
-
-    const goToTop = () => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
     
     return (
     <div>

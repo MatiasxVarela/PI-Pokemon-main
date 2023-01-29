@@ -9,6 +9,7 @@ export const GET_USER_CREATED_POKEMONS = "GET_USER_CREATED_POKEMONS"
 export const RESET_ALL_FILTERS = "RESET_ALL_FILTERS"
 export const GET_POKEMONS_TYPES = "GET_POKEMONS_TYPES"
 export const ORDER_POKEMONS_FOR_TYPE = "ORDER_POKEMONS_FOR_TYPE"
+export const ORDER_POKEMONS_FOR_MAX_ATTACK = "ORDER_POKEMONS_FOR_MAX_ATTACK"
 
 
 export const getAllPokemons = () => async (dispatch) => {
@@ -71,5 +72,11 @@ export const orderPokemonsForType = (type) => {
     return {
         type: ORDER_POKEMONS_FOR_TYPE,
         payload: type
+    }
+}
+
+export const orderPokemonsForMaxAttack = () => {
+    return {
+        type: ORDER_POKEMONS_FOR_MAX_ATTACK,
     }
 }

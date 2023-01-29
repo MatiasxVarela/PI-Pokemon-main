@@ -1,16 +1,16 @@
-import {  orderPokemonsInReverse, pokemonsSortedAlphabetically, getUserCreatedPokemons, resetAllFilters } from "../../../redux/actions";
+import {  orderPokemonsInReverse, pokemonsSortedAlphabetically, getUserCreatedPokemons, orderPokemonsForMaxAttack} from "../../../redux/actions";
 import React from "react";
-import SelecPokemonType from "./SelectPokemonType"
-import { useDispatch } from "react-redux";
+import SelectPokemonType from "./SelectPokemonType"
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import FilterButton from "./FilterButton";
 import ResetButton from "./ResetButton";
+import SwitchButton from "./SwitchButton"
 
 const FiltersDiv = styled.div`
     display: block;
     flex-direction: column;
     width: 15vw;
-    height: 62vh;
+    height: 62.5vh;
     padding-top: 3vh;
     padding-bottom: 15vh;
     margin: 15px 10px 1vh 70px;
@@ -20,10 +20,18 @@ const FiltersDiv = styled.div`
     border-radius: 15px;
 `;
 
+const StyledH2 = styled.h2`
+    font-family: 'OldPokemonFont';
+`;
+
 
 
 export default function Filters() {
     const dispatch = useDispatch()
+    const descendingStatus = useSelector(store => store.pokemonsSortValues.reverse)
+    const alphabeticallyStatus = useSelector(store => store.pokemonsSortValues.alphabetically)
+    const createdByUserStatus = useSelector(store => store.pokemonsSortValues.CreatedByUser)
+    const maxAttack = useSelector(store => store.pokemonsSortValues.attack)
 
     const orderInReverse = () => {
         dispatch(orderPokemonsInReverse())
@@ -37,17 +45,20 @@ export default function Filters() {
         dispatch(getUserCreatedPokemons())
     }
 
-    const resetPageFilters = () => {
-        dispatch(resetAllFilters())
+    const orderInMaxAttack = () => {
+        dispatch(orderPokemonsForMaxAttack())
     }
+
 
     return (
     <FiltersDiv>
-        <SelecPokemonType></SelecPokemonType>
-        <FilterButton onClick={orderInReverse} textButton="Order in reverse"></FilterButton>
-        <FilterButton onClick={orderInAlphabetically} textButton="Order in Alphabetically"></FilterButton>
-        <FilterButton onClick={pokemonsCreatedByUser} textButton="User pokemons"></FilterButton>
-        <ResetButton onClick={resetPageFilters} textButton="Reset all filters"></ResetButton>
+        <StyledH2>Filters:</StyledH2>
+        <SelectPokemonType></SelectPokemonType>
+        <SwitchButton active={maxAttack} tittle={"Pokemons for max attack:"}click={orderInMaxAttack}></SwitchButton>
+        <SwitchButton active={createdByUserStatus} tittle={"Pokemons by user:"}click={pokemonsCreatedByUser}></SwitchButton>
+        <SwitchButton active={alphabeticallyStatus} tittle={"Sort in alphabetically:"}click={orderInAlphabetically}></SwitchButton>
+        <SwitchButton active={descendingStatus} tittle={"Sort in descending:"}click={orderInReverse}></SwitchButton>
+        <ResetButton/>
     </FiltersDiv>
     );
  }

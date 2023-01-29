@@ -8,7 +8,7 @@ import Filters from "./filters/Filters"
 import Pagination from "./pagination/Pagination";
 
 const InitialPageDiv = styled.div`
-    margin: 5vh 0px 0px 0px;
+    margin: 4.4vh 0px 0px 0px;
     display: flex;
     flex-wrap: wrap;
 `;

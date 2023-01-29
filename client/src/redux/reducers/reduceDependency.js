@@ -11,8 +11,13 @@ export const arraySortedAlphabetically = (arr) => {
     return arr
 }
 
+export const arraySortedByMaxAttack = (arr) => {
+  arr = arr.slice().sort(((a,b) => b.attack - a.attack))
+  return arr
+}
+
 export const arraySortedForId = (arr) => {
-    arr = arr.slice().sort(((a, b) => {
+    arr = arr.slice().sort((a, b) => {
         if (a.id < b.id) {
           return -1;
         }
@@ -20,7 +25,7 @@ export const arraySortedForId = (arr) => {
           return 1;
         }
         return 0;
-      }))
+      })
     return arr
 }
 
@@ -40,6 +45,9 @@ export const arraySortedByValues = (arr, values) => {
   }
   if(values.types !== "anyType"){
     arr = arrayFilterForType(arr, values.types)
+  }
+  if (values.attack === true){
+    arr = arraySortedByMaxAttack(arr)
   }
   if (values.alphabetically === true){
     arr = arraySortedAlphabetically(arr)

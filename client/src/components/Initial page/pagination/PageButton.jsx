@@ -1,11 +1,6 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-
-const ButtonNavLink = styled(NavLink)`
-    text-decoration: none;
-    color: inherit;
-`;
 
 const StyledButton =  styled.button`
     &:hover{
@@ -26,11 +21,19 @@ const StyledButton =  styled.button`
 `;
 
 export default function PageButton(props) {
+    const navigate = useNavigate()
     const { id, textButton, onClick } = props
+
+    const handleClick = () => {
+        onClick()
+        setTimeout(() => {
+            navigate(`/home/${id}`)
+        }, 150);
+}
     
     return (
     <>
-        <ButtonNavLink to={`/home/${id}`}> <StyledButton onClick={props.onClick}>{textButton}</StyledButton> </ButtonNavLink>
+        <StyledButton onClick={handleClick}>{textButton}</StyledButton>
     </>
     );
  }

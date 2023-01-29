@@ -21,6 +21,7 @@ export default function MapCards() {
                 <PokemonCard 
                     id={pokemon.id}
                     key={pokemon.id} 
+                    attack={pokemon.attack}
                     name={pokemon.name} 
                     sprite={pokemon.sprite} 
                     pokemonTypes={pokemon.pokemonTypes} 

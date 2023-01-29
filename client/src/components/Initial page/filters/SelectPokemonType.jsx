@@ -3,31 +3,54 @@ import {  orderPokemonsForType } from "../../../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
-const StyledSelec = styled.select`
-    margin: 20px 0px 20px 0px;
+const StyledSelect = styled.select`
+    &:hover {
+        transform: scale(1.03);
+    }
+    font-family: 'OldPokemonFont';
+    font-size: 12px;
+    margin: 0px 0px 0px 0px;
+    font-size: 16px;
+    padding: 10px;
+    background-color: rgba(76, 109, 242, 0.83);
+    border: 2px solid rgba(255, 215, 0, 0.83);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 13px;
+    transition: all 0.4s;
 `;
 
-export default function SelecPokemonType() {
+const StyledH4 = styled.h4`
+    font-family: 'OldPokemonFont';
+`;
+
+export default function SelectPokemonType() {
     const types = useSelector(store => store.types)
+    const typesFilter = useSelector(store => store.pokemonsSortValues.types)
     const dispatch = useDispatch()
 
     const handleChange = (event) => {
-        dispatch(orderPokemonsForType(event.target.value))
+        setTimeout(() => {
+            dispatch(orderPokemonsForType(event.target.value))
+        }, 125);
     }
 
     return (
-    <div>
-        <label htmlFor="select">Order by type: </label>
-        <StyledSelec name="select" onChange={handleChange}>
+    <>
+        <StyledH4>Order by type:</StyledH4>
+        <StyledSelect name="select" onChange={handleChange}>
             <option value="anyType" >Any type</option>
             {
                 types.length > 0 && types.map(
-                    (type) => <option key={type.id} value={type.name}>
+                    (type) => 
+                    <option 
+                        key={type.id} 
+                        selected={type.name === typesFilter}
+                        value={type.name}
+                        >
                         {type.name}
-                    </option>
-                )
+                    </option>)
             }
-        </StyledSelec>
-    </div>
+        </StyledSelect>
+    </>
     );
  }

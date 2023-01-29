@@ -46,7 +46,7 @@ export default function PokemonInfo() {
     <DivBackgroundStyled>
         <DivCardStyled>
 
-       {/*  <InfoCard pokemon={pokemon}/> */}
+        {/* <InfoCard pokemon={pokemon}/> */}
         </DivCardStyled>
     </DivBackgroundStyled>
     );
