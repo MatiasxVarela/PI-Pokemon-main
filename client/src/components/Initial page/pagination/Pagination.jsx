@@ -1,0 +1,22 @@
+import React from "react";
+import MapCards from "./Cards/MapCards";
+import NavigatePageButtons from "./NavigatePageButtons";
+import styled from "styled-components";
+import { useSelector } from "react-redux";
+
+const DivStyled = styled.div`
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+`;
+
+export default function Pagination() {
+    const pokemonsLength = useSelector(store => store.pokemonsInOrder).length
+
+    return (
+    <DivStyled>
+     <MapCards/>
+     {pokemonsLength > 12 && <NavigatePageButtons/>}
+    </DivStyled>
+    );
+ }

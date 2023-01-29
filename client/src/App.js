@@ -1,13 +1,21 @@
 import './App.css';
 import InitialPage from './components/Initial page/InitialPage';
-import PokemonInfo from './components/PokemonInfo';
+import PokemonInfo from './components/PokemonsInfo/PokemonInfo';
 import { getAllPokemons, getPokemonsInOrder, getPokemonsTypes } from "./redux/actions/index";
 import Home from './components/Home';
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
-import LogoRedirect from './components/LogoRedirect';
+import LogoRedirect from './components/NavBar/LogoRedirect';
+import styled from 'styled-components';
+import bgImage from "./img/Bg.png"
+
+const AppDiv = styled.div`
+    background-image: url("${bgImage}");
+    background-size: cover;
+    background-repeat: no-repeat;
+`;
 
 function App() {
   const dispatch = useDispatch()
@@ -24,7 +32,7 @@ function App() {
   },[allPokemons, dispatch])
 
   return (
-    <div className="App">
+    <AppDiv className="App">
       {thisPath !== "/" && <NavBar></NavBar>}
       <Routes>
       <Route path="/" element={<Home/>}/>
@@ -32,7 +40,7 @@ function App() {
       <Route path="/home/:id" element={<InitialPage></InitialPage>}/>
       <Route path="/pokemon" element={<PokemonInfo/>}/>
       </Routes>
-    </div>
+    </AppDiv>
   );
 }
 

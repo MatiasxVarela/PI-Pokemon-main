@@ -1,6 +1,11 @@
 import React from "react";
 import {  orderPokemonsForType } from "../../../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
+
+const StyledSelec = styled.select`
+    margin: 20px 0px 20px 0px;
+`;
 
 export default function SelecPokemonType() {
     const types = useSelector(store => store.types)
@@ -13,7 +18,7 @@ export default function SelecPokemonType() {
     return (
     <div>
         <label htmlFor="select">Order by type: </label>
-        <select name="select" onChange={handleChange}>
+        <StyledSelec name="select" onChange={handleChange}>
             <option value="anyType" >Any type</option>
             {
                 types.length > 0 && types.map(
@@ -22,7 +27,7 @@ export default function SelecPokemonType() {
                     </option>
                 )
             }
-        </select>
+        </StyledSelec>
     </div>
     );
  }

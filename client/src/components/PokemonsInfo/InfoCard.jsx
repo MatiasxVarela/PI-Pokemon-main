@@ -1,9 +1,13 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+`;
 
 export default function InfoCard(props) {
     const { pokemon } = props
     return (
-    <div>
+    <StyledDiv>
         <h1>{pokemon.name}</h1>
         <img src={pokemon.sprite} alt="" />
         <p>{`HP: ${pokemon.hp}.`}</p>
@@ -14,6 +18,6 @@ export default function InfoCard(props) {
         <p>{`Speed: ${pokemon.speed}.`}</p>
         <p>{`Height: ${pokemon.height}.`}</p>
         <p>{`Weight: ${pokemon.weight}.`}</p>
-    </div>
+    </StyledDiv>
     );
  }

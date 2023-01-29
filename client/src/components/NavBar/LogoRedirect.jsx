@@ -1,5 +1,5 @@
 import React from "react";
-import { resetAllFilters } from "../redux/actions";
+import { resetAllFilters } from "../../redux/actions/index";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

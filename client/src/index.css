@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'OldPokemonFont';
+  src: url('./fonts/PokemonFont.ttf') format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
