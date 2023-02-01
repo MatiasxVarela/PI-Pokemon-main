@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import navLogo from "../../img/612ce4761b9679000402af1c.png"
 
 const DivNavBar = styled.div`
-    padding-top: 15px;
-    height: 10.5vh;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    height: 110px;
     border: solid #FFD700;
     background-color: #4C6DF2;
     box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.6);
@@ -22,17 +24,20 @@ const ImgLogo = styled.img`
     display: flex;
     position: absolute;
     margin-left: 7.5%;
-    margin-top: -0.1%;
+    margin-top: 5px;
 `;
 
 export default function NavBar() {
 
     return (
     <DivNavBar>
-        <Link to="/home">
+        <Link to="/home/1">
             <ImgLogo src={navLogo} alt="" />
         </Link>
         <SearchBar/>
+        <Link to="/form">
+        <button>Buenas</button>
+        </Link>
     </DivNavBar>
     );
  }

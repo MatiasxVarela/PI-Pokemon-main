@@ -1,23 +1,60 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
+const StyledCardDiv = styled.div`
+    font-family: 'OldPokemonFont';
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+`;
+
+const StyledH1 = styled.h1`
+margin-bottom: 40px;
+`;
+
+const StyledH3 = styled.h3`
+`;
+
+const StyledImg = styled.img`
+    margin: 0px 100px  0px 0px;
+    height: 400px;
+    width: 400px;
+`;
+
+const StyledTextDiv = styled.div`
+    height: 530px;
+    padding-top: 25px;
+    padding-right: 10px;
+    margin-left: -40px;
+`;
+
+const StyledP = styled.p`
+    font-size: 18px;
+    margin-top: 28px;
+    margin-bottom: 28px;
 `;
 
 export default function InfoCard(props) {
     const { pokemon } = props
+    
     return (
-    <StyledDiv>
-        <h1>{pokemon.name}</h1>
-        <img src={pokemon.sprite} alt="" />
-        <p>{`HP: ${pokemon.hp}.`}</p>
-        <p>{`Attack: ${pokemon.attack}.`}</p>
-        <p>{`Defense: ${pokemon.defense}.`}</p>
-        {!!pokemon.pokemonTypes && !pokemon.pokemonTypes[1] && <p>{`Type: ${pokemon.pokemonTypes[0].name}.`}</p>}
-        {!!pokemon.pokemonTypes && !!pokemon.pokemonTypes[1] && <p>{`Type: ${pokemon.pokemonTypes[0].name}, ${pokemon.pokemonTypes[1].name}.`}</p>}
-        <p>{`Speed: ${pokemon.speed}.`}</p>
-        <p>{`Height: ${pokemon.height}.`}</p>
-        <p>{`Weight: ${pokemon.weight}.`}</p>
-    </StyledDiv>
+    <StyledCardDiv>
+        <div>
+            <StyledImg src={pokemon.sprite} alt="" />
+        </div>
+        <StyledTextDiv>
+            <StyledH1>{pokemon.name}</StyledH1>
+            <StyledH3>{`Pokemon id: ${pokemon.id}`}</StyledH3>
+            <StyledP>{`HP: ${pokemon.hp}.`}</StyledP>
+            <StyledP>{`Attack: ${pokemon.attack}.`}</StyledP>
+            <StyledP>{`Defense: ${pokemon.defense}.`}</StyledP>
+            {!!pokemon.pokemonTypes && !pokemon.pokemonTypes[1] && <StyledP>{`Type: ${pokemon.pokemonTypes[0].name}.`}</StyledP>}
+            {!!pokemon.pokemonTypes && !!pokemon.pokemonTypes[1] && <StyledP>{`Type: ${pokemon.pokemonTypes[0].name}, ${pokemon.pokemonTypes[1].name}.`}</StyledP>}
+            <StyledP>{`Speed: ${pokemon.speed}.`}</StyledP>
+            <StyledP>{`Height: ${pokemon.height}.`}</StyledP>
+            <StyledP>{`Weight: ${pokemon.weight}.`}</StyledP>
+        </StyledTextDiv>
+    </StyledCardDiv>
     );
  }

@@ -10,8 +10,8 @@ const FiltersDiv = styled.div`
     display: block;
     flex-direction: column;
     width: 15vw;
-    height: 62.5vh;
-    padding-top: 3vh;
+    height: 64.5vh;
+    padding-top: 1vh;
     padding-bottom: 15vh;
     margin: 15px 10px 1vh 70px;
     border: 2px solid rgba(255, 215, 0, 0.83);
@@ -53,9 +53,9 @@ export default function Filters() {
     return (
     <FiltersDiv>
         <StyledH2>Filters:</StyledH2>
-        <SelectPokemonType></SelectPokemonType>
-        <SwitchButton active={maxAttack} tittle={"Pokemons for max attack:"}click={orderInMaxAttack}></SwitchButton>
         <SwitchButton active={createdByUserStatus} tittle={"Pokemons by user:"}click={pokemonsCreatedByUser}></SwitchButton>
+        <SelectPokemonType/>
+        <SwitchButton active={maxAttack} tittle={"Pokemons for max attack:"}click={orderInMaxAttack}></SwitchButton>
         <SwitchButton active={alphabeticallyStatus} tittle={"Sort in alphabetically:"}click={orderInAlphabetically}></SwitchButton>
         <SwitchButton active={descendingStatus} tittle={"Sort in descending:"}click={orderInReverse}></SwitchButton>
         <ResetButton/>

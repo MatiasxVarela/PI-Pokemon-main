@@ -3,6 +3,15 @@
   src: url('./fonts/PokemonFont.ttf') format('truetype');
 }
 
+@keyframes giro-infinito {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,4 +24,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input::-webkit-input-placeholder { 
+  color: rgba(65, 65, 65);;
 }

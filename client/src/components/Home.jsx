@@ -6,9 +6,6 @@ const HomeDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("https://assets.pokemon.com//assets/cms2-es-es/img/misc/virtual-backgrounds/sword-shield/pokemon-in-the-wild.png");
-    background-size: cover;
-    background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
 `;

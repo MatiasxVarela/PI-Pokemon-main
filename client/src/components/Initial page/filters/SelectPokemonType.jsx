@@ -8,7 +8,6 @@ const StyledSelect = styled.select`
         transform: scale(1.03);
     }
     font-family: 'OldPokemonFont';
-    font-size: 12px;
     margin: 0px 0px 0px 0px;
     font-size: 16px;
     padding: 10px;
@@ -16,7 +15,7 @@ const StyledSelect = styled.select`
     border: 2px solid rgba(255, 215, 0, 0.83);
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
     border-radius: 13px;
-    transition: all 0.4s;
+    transition: transform 0.4s;
 `;
 
 const StyledH4 = styled.h4`

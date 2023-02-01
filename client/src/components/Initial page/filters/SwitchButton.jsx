@@ -17,7 +17,7 @@ const StyledButton = styled.button`
         right: 0;
         bottom: 0;
         background-color: transparent;
-        transition: 0.55s linear;
+        transition: transform 0.55s linear;
         transform: translateX(${props => props.position}px);
     }
     border: 2px solid rgba(255, 215, 0, 0.83);
@@ -28,6 +28,7 @@ const StyledButton = styled.button`
     transition: 0.6s linear;
     border-radius: 45px;
     transform: translateX(0px) ;
+    transition: transform 0.55s linear;
     filter: grayscale(${props => props.grayScale}%);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 `;

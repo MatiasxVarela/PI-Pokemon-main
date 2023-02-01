@@ -1,6 +1,6 @@
 import React from "react";
-import MapCards from "./Cards/MapCards";
-import NavigatePageButtons from "./NavigatePageButtons";
+import MapCards from "./Cards/MapCards"
+import NavigatePageButtons from "./Navigate/NavigatePageButtons";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 

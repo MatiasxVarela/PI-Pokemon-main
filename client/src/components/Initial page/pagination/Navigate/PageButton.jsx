@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
+import { goToTop } from "../../../../Util/goToTop";
 
 const StyledButton =  styled.button`
     &:hover{
@@ -12,7 +13,6 @@ const StyledButton =  styled.button`
     width: 2.25vw;
     height: 3.5vh;
     margin: 10px 5px 20px 5px;
-    border: none;
     background-color: rgba(255, 215, 0,9);
     border: 2px solid rgba(76, 109, 242, 0.9);
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
@@ -22,10 +22,10 @@ const StyledButton =  styled.button`
 
 export default function PageButton(props) {
     const navigate = useNavigate()
-    const { id, textButton, onClick } = props
+    const { id, textButton } = props
 
     const handleClick = () => {
-        onClick()
+        goToTop()
         setTimeout(() => {
             navigate(`/home/${id}`)
         }, 150);

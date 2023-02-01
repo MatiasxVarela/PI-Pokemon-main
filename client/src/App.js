@@ -7,9 +7,9 @@ import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
-import LogoRedirect from './components/NavBar/LogoRedirect';
 import styled from 'styled-components';
 import bgImage from "./img/Bg.png"
+import Form from './components/Form/Form';
 
 const AppDiv = styled.div`
     background-image: url("${bgImage}");
@@ -36,9 +36,9 @@ function App() {
       {thisPath !== "/" && <NavBar></NavBar>}
       <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path="/home" element={<LogoRedirect></LogoRedirect>}/>
       <Route path="/home/:id" element={<InitialPage></InitialPage>}/>
       <Route path="/pokemon" element={<PokemonInfo/>}/>
+      <Route path="/form" element={<Form/>}/>
       </Routes>
     </AppDiv>
   );

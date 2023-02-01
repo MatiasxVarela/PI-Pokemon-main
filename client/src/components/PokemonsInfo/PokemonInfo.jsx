@@ -2,19 +2,20 @@ import { useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
 import InfoCard from "./InfoCard";
 import styled from 'styled-components';
+import ErrorCard from './ErrorCard';
+import LoadCard from './LoadCard';
 
 const DivBackgroundStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 87.8vh;
-    
 `;
 
 const DivCardStyled = styled.div`
-    width:  60vw;
-    height: 60vh;
-    background-color: red;
+    width:  800px;
+    height: 540px;
+    margin-top: 55px;
     border: 2px solid rgba(255, 215, 0, 0.87);
     background-color: rgba(76, 109, 242, 0.87);
     box-shadow: 16px 16px 40px rgba(0, 0, 0, 0.7);
@@ -45,9 +46,11 @@ export default function PokemonInfo() {
     return (
     <DivBackgroundStyled>
         <DivCardStyled>
-
-        {/* <InfoCard pokemon={pokemon}/> */}
+            {Object.entries(pokemon).length === 0 && <LoadCard/>}
+            {pokemon.id !== undefined && <InfoCard pokemon={pokemon}/>}
+            {pokemon.err !== undefined && <ErrorCard name={name} />}
         </DivCardStyled>
+        
     </DivBackgroundStyled>
     );
  }
