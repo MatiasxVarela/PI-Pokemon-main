@@ -10,7 +10,6 @@ const StyledRange = styled.input`
     width: 40%;
     height: 8px;
     border-radius: 8px;
-
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       height: 25px;
@@ -23,7 +22,12 @@ const StyledRange = styled.input`
     }
   `;
 
+const StyledButtonDiv = styled.div`
+    margin-top: auto;
+`;
+
 export default function RangesForms(props) {
+    const prevData = props.prevData
     const formComplete = props.formComplete
     const setFormComplete = props.setFormComplete
     const formInfo = props.formInfo
@@ -32,6 +36,7 @@ export default function RangesForms(props) {
     const formTittle = props.formTittle
     const [firstInput, setFirstInput] = useState(125);
     const [secondInput, setSecondInput] = useState(125);
+    const [thirdInput, setThirdInput] = useState(125);
 
     const handleFirstInputChange = (event) => {
         setFirstInput(event.target.value);
@@ -41,9 +46,30 @@ export default function RangesForms(props) {
         setSecondInput(event.target.value);
     };
 
+    const handleThirdInputChange = (event) => {
+        setThirdInput(event.target.value);
+    };
+
     const nextOnClick = () => {
-        setFormComplete({...formComplete, [actualData[0]]: true, [actualData[1]]: true});
-        setValues({...formInfo, [actualData[0]]: firstInput, [actualData[1]]: secondInput,})
+        setFormComplete({
+            ...formComplete, 
+            [actualData[0]]: true, 
+            [actualData[1]]: true,
+            [actualData[2]]: true
+        });
+        setValues({
+            ...formInfo, 
+            [actualData[0]]: firstInput, 
+            [actualData[1]]: secondInput, 
+            [actualData[2]]: thirdInput
+        })
+    }
+
+    const backOnClick = () => {
+        prevData.forEach(element => {
+            formComplete[element] = false
+        });
+        setFormComplete({...formComplete})
     }
 
     return (
@@ -53,7 +79,12 @@ export default function RangesForms(props) {
         <StyledRange min="1" max="250" type="range" value={firstInput} onChange={handleFirstInputChange}></StyledRange>
         <h5>{`${[actualData[1]]}: ${secondInput}`}</h5>
         <StyledRange min="1" max="250" type="range" value={secondInput} onChange={handleSecondInputChange}></StyledRange>
-        <FormButton onClick={nextOnClick} textButton="Next"/>
+        <h5>{`${[actualData[2]]}: ${thirdInput}`}</h5>
+        <StyledRange min="1" max="250" type="range" value={thirdInput} onChange={handleThirdInputChange}></StyledRange>
+        <StyledButtonDiv>
+            <FormButton isActive={true} onClick={backOnClick} textButton="Back"/>
+            <FormButton isActive={true} onClick={nextOnClick} textButton="Next"/>
+        </StyledButtonDiv>
     </>
     );
  }

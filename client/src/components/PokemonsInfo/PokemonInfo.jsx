@@ -9,7 +9,7 @@ const DivBackgroundStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 87.8vh;
+    height: 88.4vh;
 `;
 
 const DivCardStyled = styled.div`
@@ -46,9 +46,21 @@ export default function PokemonInfo() {
     return (
     <DivBackgroundStyled>
         <DivCardStyled>
-            {Object.entries(pokemon).length === 0 && <LoadCard/>}
-            {pokemon.id !== undefined && <InfoCard pokemon={pokemon}/>}
-            {pokemon.err !== undefined && <ErrorCard name={name} />}
+
+            {
+            Object.entries(pokemon).length === 0
+            && <LoadCard/>
+            }
+
+            {
+            pokemon.id !== undefined 
+            && <InfoCard pokemon={pokemon}/>
+            }
+
+            {pokemon.err !== undefined 
+            && <ErrorCard name={name} />
+            }
+            
         </DivCardStyled>
         
     </DivBackgroundStyled>

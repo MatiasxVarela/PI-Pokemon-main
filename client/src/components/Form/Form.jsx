@@ -53,10 +53,6 @@ export default function Form() {
         types: false
     })
 
-    const handleOnClick = (formStatus) => {
-        setFormComplete({...formComplete, [formStatus]: true})
-    }
-
     const formNameHandleOnChange = (event, actualData) => {
         const regex = /^[\w\d\u00C0-\u017F-]+$/;
         if (event.target.value.match(regex) || event.target.value === "") {
@@ -70,48 +66,75 @@ export default function Form() {
 
             {
             formComplete.name === false 
-            && <NameForm onChange={formNameHandleOnChange} onClick={handleOnClick} actualData="name" formInfo={formInfo.name}/>
+            && <NameForm
+                    formComplete={formComplete}
+                    setFormComplete={setFormComplete}
+                    onChange={formNameHandleOnChange}  
+                    actualData="name" 
+                    formInfo={formInfo.name}
+                ></NameForm>
             }
 
             {
             formComplete.name === true 
             && formComplete.types === false
-            && <TypesForm setTypes={setFormInfo} formInfo={formInfo} onClick={handleOnClick} actualData="types"/>
+            && <TypesForm 
+                    prevData={"name"}
+                    setTypes={setFormInfo} 
+                    formInfo={formInfo} 
+                    setFormComplete={setFormComplete} 
+                    formComplete={formComplete} 
+                    actualData="types"
+                ></TypesForm>
             }
 
             {
             formComplete.types === true
             && formComplete.hp === false
             && formComplete.attack === false
-            && <RangesForms setFormComplete={setFormComplete} formComplete={formComplete} setValues={setFormInfo} actualData={["hp", "attack"]} formInfo={formInfo} formTittle="Set values hp, atk"/>
-
+            && formComplete.defense === false
+            && <RangesForms 
+                    prevData={["types"]}
+                    formTittle="Set values hp, atk"
+                    actualData={["hp", "attack", "defense"]} 
+                    setFormComplete={setFormComplete} 
+                    formComplete={formComplete} 
+                    setValues={setFormInfo} 
+                    formInfo={formInfo} 
+                ></RangesForms>
             }
 
             {
             formComplete.hp === true
             && formComplete.attack === true
-            && formComplete.defense === false
+            && formComplete.defense === true
             && formComplete.speed === false
-            && <RangesForms setFormComplete={setFormComplete} formComplete={formComplete} setValues={setFormInfo} actualData={["defense", "speed"]} formInfo={formInfo} formTittle="Set values from speed defense" />
-            }
-
-            {
-            formComplete.defense === true
-            && formComplete.speed === true
             && formComplete.height === false
             && formComplete.weight === false
-            && <RangesForms setFormComplete={setFormComplete} formComplete={formComplete} setValues={setFormInfo} actualData={["height", "weight"]} formInfo={formInfo} formTittle="Set values from height weight"/>
+            && <RangesForms 
+                    prevData={["hp", "attack", "defense"]}
+                    formTittle="Set values from height weight"
+                    actualData={["speed", "height", "weight"]}
+                    formComplete={formComplete}
+                    setFormComplete={setFormComplete}
+                    formInfo={formInfo}
+                    setValues={setFormInfo}
+                ></RangesForms>
             }
 
             {
             formComplete.height === true
             && formComplete.weight === true
             && formComplete.sprite === false
-            && <SpriteForm formInfo={formInfo}></SpriteForm>
+            && <SpriteForm 
+                    prevData={["speed", "height", "weight"]}
+                    formComplete={formComplete}
+                    setFormComplete={setFormComplete}
+                    formInfo={formInfo}
+                ></SpriteForm>
             }
 
         </FormDiv>
-        <button onClick={() => {console.log(formInfo); console.log(formComplete)}}>Consologueo el form</button>
     </BackgroundDiv>
     );
  }

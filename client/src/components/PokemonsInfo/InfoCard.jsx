@@ -10,10 +10,7 @@ const StyledCardDiv = styled.div`
 `;
 
 const StyledH1 = styled.h1`
-margin-bottom: 40px;
-`;
-
-const StyledH3 = styled.h3`
+    margin-bottom: 40px;
 `;
 
 const StyledImg = styled.img`
@@ -45,12 +42,22 @@ export default function InfoCard(props) {
         </div>
         <StyledTextDiv>
             <StyledH1>{pokemon.name}</StyledH1>
-            <StyledH3>{`Pokemon id: ${pokemon.id}`}</StyledH3>
+            <StyledP>{`Pokemon id: ${pokemon.id}`}</StyledP>
+
+            {
+            !!pokemon.pokemonTypes 
+            && !pokemon.pokemonTypes[1] 
+            && <StyledP>{`Type: ${pokemon.pokemonTypes[0].name}.`}</StyledP>
+            }
+
+            {
+            !!pokemon.pokemonTypes 
+            && !!pokemon.pokemonTypes[1] 
+            && <StyledP>{`Type: ${pokemon.pokemonTypes[0].name}, ${pokemon.pokemonTypes[1].name}.`}</StyledP>
+            }
             <StyledP>{`HP: ${pokemon.hp}.`}</StyledP>
             <StyledP>{`Attack: ${pokemon.attack}.`}</StyledP>
             <StyledP>{`Defense: ${pokemon.defense}.`}</StyledP>
-            {!!pokemon.pokemonTypes && !pokemon.pokemonTypes[1] && <StyledP>{`Type: ${pokemon.pokemonTypes[0].name}.`}</StyledP>}
-            {!!pokemon.pokemonTypes && !!pokemon.pokemonTypes[1] && <StyledP>{`Type: ${pokemon.pokemonTypes[0].name}, ${pokemon.pokemonTypes[1].name}.`}</StyledP>}
             <StyledP>{`Speed: ${pokemon.speed}.`}</StyledP>
             <StyledP>{`Height: ${pokemon.height}.`}</StyledP>
             <StyledP>{`Weight: ${pokemon.weight}.`}</StyledP>

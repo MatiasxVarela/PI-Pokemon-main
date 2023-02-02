@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import FormButton from "./FormButton"
 import styled from "styled-components";
@@ -55,12 +55,19 @@ const StyledCheckbox = styled.input`
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 `;
 
+const StyledButtonDiv = styled.div`
+    margin-top: auto;
+`;
+
 export default function TypesForm(props) {
-    const onClick = props.onClick
+    const setFormComplete = props.setFormComplete
+    const formComplete = props.formComplete
     const actualData = props.actualData
+    const prevData = props.prevData
     const setTypes = props.setTypes
     let formInfo = props.formInfo
     const types = useSelector(store => store.types)
+    const [ bottonActive, setBottonActive ] = useState(false)
     const [ firstTypeState, setFirstTypeState ] = useState(false)
     const [ secondTypeState, setSecondTypeState ] = useState(false)
     const [ firstTypeValue, setFirstTypeValue ] = useState("None")
@@ -69,7 +76,16 @@ export default function TypesForm(props) {
         type1: "",
         type2: ""
     })
-    
+
+    useEffect(() => {
+        if (firstTypeState === true && (showSecondType === false || (secondTypeState === true && allTypes.type2 !== ""))){
+            setBottonActive(true)
+        } else {
+            setBottonActive(false)
+        }
+
+    },[firstTypeState, secondTypeState, showSecondType])
+
     const firstTypeHandleChange = (event) => {
         setFirstTypeState(true)
         setFirstTypeValue(event.target.value)
@@ -86,10 +102,26 @@ export default function TypesForm(props) {
         setAllTypes({...allTypes, type2: ""})
     }
 
+    const nextOnClick = () => {
+        setTypes(formInfo = {...formInfo, [actualData]: allTypes})
+        setFormComplete({
+            ...formComplete, 
+            [actualData]: true
+        });
+    }
+
+    const backOnClick = () => {
+        setFormComplete({
+            ...formComplete, 
+            [prevData]: false
+        });
+    }
+
     return (
     <>
         <H1Styled>Select the type of your Pokemon:</H1Styled>
         <StyledH3>First type:</StyledH3>
+
         <StyledSelect onChange={firstTypeHandleChange}>
         <option value="None" >None</option>
             {
@@ -137,12 +169,13 @@ export default function TypesForm(props) {
         firstTypeState === true 
         && <StyledCheckbox name="secondTypeCheck" type={"checkbox"} onChange={showSecondTypeHandleChange} ></StyledCheckbox> 
         }
+        
+        <StyledButtonDiv>
+        <FormButton isActive={true} onClick={backOnClick} textButton="Back"></FormButton>
 
-        {
-        firstTypeState === true
-        && (showSecondType === false || (secondTypeState === true && allTypes.type2 !== ""))
-        && <FormButton onClick={() => {onClick(actualData); setTypes(formInfo = {...formInfo, [actualData]: allTypes})}} textButton="Next"></FormButton>
-        }
+        <FormButton isActive={bottonActive} onClick={nextOnClick} textButton="Next"></FormButton>
+        
+        </StyledButtonDiv>
     </>
     );
  }

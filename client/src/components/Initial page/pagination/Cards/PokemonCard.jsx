@@ -42,8 +42,17 @@ export default function PokemonCard(props) {
             <CardLink to={`/pokemon?id=${props.id}`}>
                 <StyledH1>{props.name}</StyledH1>
                 <CardImg src={props.sprite} alt="" />
-                {!!props.pokemonTypes && !props.pokemonTypes[1] && <p>{`Type: ${props.pokemonTypes[0].name}.`}</p>}
-                {!!props.pokemonTypes && !!props.pokemonTypes[1] && <p>{`Type: ${props.pokemonTypes[0].name}, ${props.pokemonTypes[1].name}.`}</p>}
+                {
+                !!props.pokemonTypes 
+                && !props.pokemonTypes[1] 
+                && <p>{`Type: ${props.pokemonTypes[0].name}.`}</p>
+                }
+
+                {
+                !!props.pokemonTypes 
+                && !!props.pokemonTypes[1] 
+                && <p>{`Type: ${props.pokemonTypes[0].name}, ${props.pokemonTypes[1].name}.`}</p>
+                }
                 <p>{`Attack: ${props.attack}`}</p>
             </CardLink>
         </CardDiv>

@@ -1,5 +1,6 @@
 import FormButton from "./FormButton";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
 const H1Styled = styled.h1`
     font-family: 'OldPokemonFont';
@@ -27,19 +28,47 @@ const StyledInput = styled.input`
 `;
 
 export default function FormInput(props) {
+    const setFormComplete = props.setFormComplete
+    const formComplete = props.formComplete
     const actualData = props.actualData
     const formInfo = props.formInfo
     const onChange = props.onChange
-    const onClick = props.onClick
+    const [ bottonActive, setBottonActive ] = useState(false)
 
+    const nextOnClick = () => {
+        setFormComplete({
+            ...formComplete, 
+            [actualData]: true
+        });
+    }
+
+    useEffect(() => {
+        if (props.formInfo.length >= 3 && props.formInfo.length <= 11 ){
+            setBottonActive(true)
+        }else {
+            setBottonActive(false)
+        }
+    }, [formInfo])
 
     return (
     <>
         <H1Styled>Let's start, first give your Pokemon a name:</H1Styled>
         <StyledInput onChange={(event) => onChange(event, actualData)} value={formInfo}></StyledInput>
-        {props.formInfo.length > 2 && props.formInfo.length < 11 && <FormButton onClick={() => {onClick(actualData)}} textButton="Next"></FormButton>}
-        {props.formInfo.length > 0 && props.formInfo.length < 3 && <p>Necesitas al menos 3 letras</p>}
-        {props.formInfo.length >= 11 && <p>No puedes tener más de 11 letras</p>}
+
+        {
+            props.formInfo.length > 0 
+            && props.formInfo.length < 3 
+            && <p>Necesitas al menos 3 letras</p>
+        }
+
+        {
+            props.formInfo.length >= 12 
+            && <p>No puedes tener más de 11 letras</p>
+        }
+        
+        {
+         <FormButton isActive={bottonActive} onClick={nextOnClick} textButton="Next"></FormButton>
+        }
     </>
     );
  }
