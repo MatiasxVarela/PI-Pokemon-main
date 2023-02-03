@@ -21,6 +21,7 @@ const CurrentPageButton = styled.button`
     border-radius: 10px;
     transform: scale(1.15);
     transition: all 0.8s;
+    cursor: pointer;
 `;
 
 export default function NavigatePageButtons() {

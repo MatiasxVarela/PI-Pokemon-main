@@ -16,6 +16,7 @@ const StyledSelect = styled.select`
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
     border-radius: 13px;
     transition: transform 0.4s;
+    cursor: pointer;
 `;
 
 const StyledH4 = styled.h4`

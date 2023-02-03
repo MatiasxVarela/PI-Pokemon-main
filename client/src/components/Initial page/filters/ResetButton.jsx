@@ -29,6 +29,7 @@ const StyledButton = styled.button`
     color: inherit;
     transition: transform 0.6s linear;
     transform: rotate(${props => props.rotation}deg);
+    cursor: pointer;
 `;
 
 export default function ResetButton() {

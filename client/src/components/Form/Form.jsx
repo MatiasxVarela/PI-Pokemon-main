@@ -10,7 +10,7 @@ const BackgroundDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 87.9vh;
+    height: 88.4vh;
     width: 100vw;
 `;
 
@@ -95,8 +95,8 @@ export default function Form() {
             && formComplete.defense === false
             && <RangesForms 
                     prevData={["types"]}
-                    formTittle="Set values hp, atk"
-                    actualData={["hp", "attack", "defense"]} 
+                    formTittle="Okay, now let's assign some values to our Pokemons."
+                    actualData={["HP", "Attack", "Defense"]} 
                     setFormComplete={setFormComplete} 
                     formComplete={formComplete} 
                     setValues={setFormInfo} 
@@ -113,8 +113,8 @@ export default function Form() {
             && formComplete.weight === false
             && <RangesForms 
                     prevData={["hp", "attack", "defense"]}
-                    formTittle="Set values from height weight"
-                    actualData={["speed", "height", "weight"]}
+                    formTittle="We're almost done, add some last values."
+                    actualData={["Speed", "Height", "Weight"]}
                     formComplete={formComplete}
                     setFormComplete={setFormComplete}
                     formInfo={formInfo}

@@ -26,6 +26,7 @@ const StyledSelect = styled.select`
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
     border-radius: 13px;
     transition: all 0.4s;
+    cursor: pointer;
 `; 
 
 const StyledCheckbox = styled.input`
@@ -53,6 +54,7 @@ const StyledCheckbox = styled.input`
     margin-top: -5px;
     transition: transform 0.5s;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 `;
 
 const StyledButtonDiv = styled.div`
@@ -84,22 +86,28 @@ export default function TypesForm(props) {
             setBottonActive(false)
         }
 
-    },[firstTypeState, secondTypeState, showSecondType])
+    },[firstTypeState, secondTypeState, showSecondType, allTypes])
 
     const firstTypeHandleChange = (event) => {
-        setFirstTypeState(true)
-        setFirstTypeValue(event.target.value)
-        setAllTypes({...allTypes, type1: event.target.value})
+        setTimeout(() => {
+            setFirstTypeState(true)
+            setFirstTypeValue(event.target.value)
+            setAllTypes({...allTypes, type1: event.target.value}) 
+        }, 85);
     }
 
     const secondTypeHandleChange = (event) => {
-        setSecondTypeState(true)
-        setAllTypes({...allTypes, type2: event.target.value})
+        setTimeout(() => {
+            setSecondTypeState(true)
+            setAllTypes({...allTypes, type2: event.target.value}) 
+        }, 85);
     }
 
     const showSecondTypeHandleChange = () => {
-        setShowSecondType(!showSecondType)
-        setAllTypes({...allTypes, type2: ""})
+        setTimeout(() => {
+            setShowSecondType(!showSecondType)
+            setAllTypes({...allTypes, type2: ""})
+        }, 85);
     }
 
     const nextOnClick = () => {

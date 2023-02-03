@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 const H1Styled = styled.h1`
     font-family: 'OldPokemonFont';
+    margin-top: 165px;
     font-size: 28px;
 `;
 
@@ -43,7 +44,7 @@ export default function FormInput(props) {
     }
 
     useEffect(() => {
-        if (props.formInfo.length >= 3 && props.formInfo.length <= 11 ){
+        if (formInfo.length >= 3 && formInfo.length <= 11 ){
             setBottonActive(true)
         }else {
             setBottonActive(false)
@@ -56,13 +57,13 @@ export default function FormInput(props) {
         <StyledInput onChange={(event) => onChange(event, actualData)} value={formInfo}></StyledInput>
 
         {
-            props.formInfo.length > 0 
-            && props.formInfo.length < 3 
+            formInfo.length > 0 
+            && formInfo.length < 3 
             && <p>Necesitas al menos 3 letras</p>
         }
 
         {
-            props.formInfo.length >= 12 
+            formInfo.length >= 12 
             && <p>No puedes tener más de 11 letras</p>
         }
         

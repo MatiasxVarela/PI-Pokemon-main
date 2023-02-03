@@ -31,6 +31,7 @@ const StyledButton = styled.button`
     transition: transform 0.55s linear;
     filter: grayscale(${props => props.grayScale}%);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 `;
 
 const StyledH4 = styled.h4`

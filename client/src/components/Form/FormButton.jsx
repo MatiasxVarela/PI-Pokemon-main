@@ -13,8 +13,9 @@ const StyledButton = styled.button`
     background-color: rgba(255, 215, 0, 0.87);
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     border-radius: 8px;
-    transition: transform 0.6s;
+    transition: transform 0.6s, filter 0.6s;
     filter: grayscale(${props => props.isActive ? '0' : '100'}%);
+    cursor: ${props => props.isActive ? 'pointer' : "default"};
 `;
 
 export default function FormButton(props) {
@@ -23,8 +24,10 @@ export default function FormButton(props) {
     const text = props.textButton
 
     const handleOnClick = () => {
-        if (isActive == true){
-            onClick()
+        if (isActive === true){
+            setTimeout(() => {
+                onClick()    
+            }, 85);
         }
     }
 

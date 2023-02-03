@@ -10,6 +10,36 @@ const StyledButtonDiv = styled.div`
     margin-top: auto;
 `;
 
+const StyledH1 = styled.h1`
+     font-family: 'OldPokemonFont';
+     margin-top: 100px;
+`;
+
+const StyledPError = styled.p`
+    font-family: 'OldPokemonFont';
+    color: rgba(255, 153, 51, 0.83);
+    margin-top: 15px;
+    max-width: 320px;
+`;
+const StyledInput = styled.input`
+    &:focus {
+        outline: none;
+        transform: scale(1.02);
+        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.6);
+    }
+    font-family: 'OldPokemonFont';
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    padding: 6px 9px 6px 9px;
+    margin-top: 15px;
+    background-color: rgba(76, 109, 242, 0.83);
+    border: 2px solid rgba(255, 215, 0, 0.83);
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    transition: transform 0.4s;
+`;
+
 export default function ImageForm(props) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -50,13 +80,13 @@ export default function ImageForm(props) {
 
     return (
     <>
-    <h1>Por ultimo pone tu imagen</h1>
-    <input onChange={handleOnChange}></input>
+    <StyledH1>Finally, put an image to the pokemon.</StyledH1>
+    <StyledInput onChange={handleOnChange}></StyledInput>
 
     {
     isAImage !== null
     && isAImage !== true
-    && <p> Tiene que ser una url valida, de una imagen png o jpg</p>
+    && <StyledPError>It must be a valid URL of a PNG or JPG image.</StyledPError>
     }
 
     <StyledButtonDiv>

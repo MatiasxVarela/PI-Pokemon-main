@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const StyledRange = styled.input`
     -webkit-appearance: none;
+    margin-bottom: 35px;
     background-color: rgba(76, 109, 242, 0.83);
     border: 2px solid rgba(255, 215, 0, 1);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
@@ -24,6 +25,15 @@ const StyledRange = styled.input`
 
 const StyledButtonDiv = styled.div`
     margin-top: auto;
+`;
+
+const StyledH1 = styled.h1`
+     font-family: 'OldPokemonFont';
+     margin-bottom: 30px;
+`;
+
+const StyledH3 = styled.h3`
+     font-family: 'OldPokemonFont';
 `;
 
 export default function RangesForms(props) {
@@ -53,33 +63,33 @@ export default function RangesForms(props) {
     const nextOnClick = () => {
         setFormComplete({
             ...formComplete, 
-            [actualData[0]]: true, 
-            [actualData[1]]: true,
-            [actualData[2]]: true
+            [actualData[0].toLowerCase()]: true, 
+            [actualData[1].toLowerCase()]: true,
+            [actualData[2].toLowerCase()]: true
         });
         setValues({
             ...formInfo, 
-            [actualData[0]]: firstInput, 
-            [actualData[1]]: secondInput, 
-            [actualData[2]]: thirdInput
+            [actualData[0].toLowerCase()]: firstInput, 
+            [actualData[1].toLowerCase()]: secondInput, 
+            [actualData[2].toLowerCase()]: thirdInput
         })
     }
 
     const backOnClick = () => {
         prevData.forEach(element => {
-            formComplete[element] = false
+            formComplete[element.toLowerCase()] = false
         });
         setFormComplete({...formComplete})
     }
 
     return (
     <>
-        <h1>{formTittle}</h1>
-        <h5>{`${[actualData[0]]}: ${firstInput}`}</h5>
+        <StyledH1>{formTittle}</StyledH1>
+        <StyledH3>{`${[actualData[0]]}: ${firstInput}`}</StyledH3>
         <StyledRange min="1" max="250" type="range" value={firstInput} onChange={handleFirstInputChange}></StyledRange>
-        <h5>{`${[actualData[1]]}: ${secondInput}`}</h5>
+        <StyledH3>{`${[actualData[1]]}: ${secondInput}`}</StyledH3>
         <StyledRange min="1" max="250" type="range" value={secondInput} onChange={handleSecondInputChange}></StyledRange>
-        <h5>{`${[actualData[2]]}: ${thirdInput}`}</h5>
+        <StyledH3>{`${[actualData[2]]}: ${thirdInput}`}</StyledH3>
         <StyledRange min="1" max="250" type="range" value={thirdInput} onChange={handleThirdInputChange}></StyledRange>
         <StyledButtonDiv>
             <FormButton isActive={true} onClick={backOnClick} textButton="Back"/>

@@ -18,6 +18,7 @@ const StyledButton =  styled.button`
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     transition: all 0.8s;
+    cursor: pointer;
 `;
 
 export default function PageButton(props) {

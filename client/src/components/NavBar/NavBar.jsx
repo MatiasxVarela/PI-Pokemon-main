@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import navLogo from "../../img/612ce4761b9679000402af1c.png"
 
 const DivNavBar = styled.div`
@@ -21,23 +21,31 @@ const ImgLogo = styled.img`
     height: 120px;
     object-fit: cover;
     object-position: bottom;
-    display: flex;
-    position: absolute;
-    margin-left: 7.5%;
-    margin-top: 5px;
+    margin: 5px 0px 0px 125px;
+    cursor: pointer;
 `;
 
 export default function NavBar() {
+    const navigate = useNavigate()
+
+    const handleLogoOnClick = () => {
+        setTimeout(() => {
+            navigate("/home/1")
+        }, 85);
+    }
+
+    const handleFormOnClick = () => {
+        setTimeout(() => {
+            navigate("/form")
+        }, 85);
+    }
 
     return (
     <DivNavBar>
-        <Link to="/home/1">
-            <ImgLogo src={navLogo} alt="" />
-        </Link>
+        <ImgLogo src={navLogo} onClick={handleLogoOnClick} alt="A pokemon logo" />
         <SearchBar/>
-        <Link to="/form">
-        <button>Buenas</button>
-        </Link>
+        <button onClick={handleFormOnClick}>Buenas</button>
+        
     </DivNavBar>
     );
  }

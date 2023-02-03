@@ -6,8 +6,8 @@ import styled from 'styled-components';
 const SearchBarDiv = styled.div`
     display: flex;
     flex-wrap: wrap;    
-    justify-content: center;
     align-items: center;
+    margin: 0px 310px 0px 0px;
 `;
 
 const StyledInput = styled.input`
@@ -44,6 +44,7 @@ const StyledButton = styled.button`
      border-radius: 8px;
      transform: translateY(0.5px);
      transition: transform 0.6s;
+     cursor: pointer;
 `;
 
 export default function SearchBar() {
