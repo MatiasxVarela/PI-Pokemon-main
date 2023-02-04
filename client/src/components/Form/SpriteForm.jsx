@@ -63,7 +63,7 @@ export default function ImageForm(props) {
     }
 
     const nextOnClick = async () => {
-        await axios.post('http://localhost:3001/pokemons', {
+        await axios.post('/pokemons', {
             ...formInfo,
             sprite: inputValue,
             types: [formInfo.types.type1, formInfo.types.type2]

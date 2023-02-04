@@ -1,4 +1,5 @@
 import './App.css';
+import axios from 'axios';
 import InitialPage from './components/Initial page/InitialPage';
 import PokemonInfo from './components/PokemonsInfo/PokemonInfo';
 import { getAllPokemons, getPokemonsInOrder, getPokemonsTypes } from "./redux/actions/index";
@@ -10,6 +11,8 @@ import NavBar from './components/NavBar/NavBar';
 import styled from 'styled-components';
 import bgImage from "./img/Bg.png"
 import Form from './components/Form/Form';
+
+axios.defaults.baseURL = 'https://pokemonvrl-production.up.railway.app/'
 
 const AppDiv = styled.div`
     background-image: url("${bgImage}");

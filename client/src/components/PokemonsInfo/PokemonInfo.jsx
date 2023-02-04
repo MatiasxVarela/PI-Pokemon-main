@@ -34,9 +34,9 @@ export default function PokemonInfo() {
 
     useEffect(() => {
         if (name !== null){
-            url.current = `http://localhost:3001/pokemons?name=${name}`
+            url.current = `/pokemons?name=${name}`
          } else if (id !== null){
-             url.current = `http://localhost:3001/pokemons/${id}`
+             url.current = `/pokemons/${id}`
          }
         fetch(url.current)
             .then((response) => response.json())

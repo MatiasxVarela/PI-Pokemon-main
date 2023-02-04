@@ -13,7 +13,7 @@ export const ORDER_POKEMONS_FOR_MAX_ATTACK = "ORDER_POKEMONS_FOR_MAX_ATTACK"
 
 
 export const getAllPokemons = () => async (dispatch) => {
-        const res = await fetch('http://localhost:3001/pokemons');
+        const res = await fetch('/pokemons');
         const data = await res.json();
         dispatch({
             type: GET_ALL_POKEMONS,
@@ -22,7 +22,7 @@ export const getAllPokemons = () => async (dispatch) => {
 };
 
 export const getPokemonsTypes = () => async (dispatch) => {
-        const res = await fetch('http://localhost:3001/types');
+        const res = await fetch('/types');
         const data = await res.json();
         dispatch({
             type: GET_POKEMONS_TYPES,
