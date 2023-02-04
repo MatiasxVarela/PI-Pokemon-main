@@ -10,7 +10,6 @@ import Pagination from "./pagination/Pagination";
 const InitialPageDiv = styled.div`
     margin: 4.4vh 0px 0px 0px;
     display: flex;
-    flex-wrap: wrap;
     min-height: 84.4vh;
 `;
 

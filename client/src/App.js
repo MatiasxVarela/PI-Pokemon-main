@@ -13,6 +13,7 @@ import bgImage from "./img/Bg.png"
 import Form from './components/Form/Form';
 
 axios.defaults.baseURL = 'https://pokemonvrl-production.up.railway.app/'
+/* axios.defaults.baseURL = 'http://localhost:3001/' */
 
 const AppDiv = styled.div`
     background-image: url("${bgImage}");

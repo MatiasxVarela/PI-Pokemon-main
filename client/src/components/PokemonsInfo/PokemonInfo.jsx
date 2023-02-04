@@ -41,6 +41,8 @@ export default function PokemonInfo() {
          }
         axios.get(url.current)
             .then(response => {setPokemon(response.data);})
+            .catch(error => {setPokemon(error.response.data)}
+            );
       }, [id,name]);
 
     return (

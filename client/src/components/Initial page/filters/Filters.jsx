@@ -9,10 +9,10 @@ import SwitchButton from "./SwitchButton"
 const FiltersDiv = styled.div`
     display: block;
     flex-direction: column;
-    width: 15vw;
-    height: 64.5vh;
-    padding-top: 1vh;
-    padding-bottom: 15vh;
+    min-width: 285px;
+    max-width: 285px;
+    min-height: 755px;
+    max-height: 775px;
     margin: 15px 10px 1vh 70px;
     border: 2px solid rgba(255, 215, 0, 0.83);
     background-color: rgba(76, 109, 242, 0.83);

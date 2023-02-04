@@ -5,7 +5,8 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 const DivStyled = styled.div`
-    width: 75vw;
+    min-width: 500px;
+    max-width: 1500px;
     display: flex;
     flex-direction: column;
 `;
