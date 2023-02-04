@@ -7,7 +7,7 @@ const SearchBarDiv = styled.div`
     display: flex;
     flex-wrap: wrap;    
     align-items: center;
-    margin: 0px 310px 0px 0px;
+    margin: auto 200px auto auto;
 `;
 
 const StyledInput = styled.input`

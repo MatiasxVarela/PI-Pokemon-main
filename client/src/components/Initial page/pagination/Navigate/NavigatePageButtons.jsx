@@ -26,7 +26,7 @@ const CurrentPageButton = styled.button`
 
 export default function NavigatePageButtons() {
     const pageId = useSelector(state => state.pageId)
-    const pokemonsLength = useSelector((state) => state.pokemons).length
+    const pokemonsLength = useSelector((state) => state.pokemonsInOrder).length
     const LastPage = Math.ceil(pokemonsLength / 12)
     
     return (

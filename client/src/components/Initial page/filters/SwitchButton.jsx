@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
 import pokeBall from "../../../img/Pokeball.png"
+import { useNavigate } from "react-router-dom";
 
 
 const StyledButton = styled.button`
@@ -40,6 +41,7 @@ const StyledH4 = styled.h4`
 `;
 
 export default function SwitchButton(props) {
+   const navigate = useNavigate()
    const [ position, setPosition] = useState(0)
    const [ grayScale, setGrayScale ] = useState(100)
    const click = props.click
@@ -64,6 +66,11 @@ export default function SwitchButton(props) {
          setPosition(position - 36)
          setGrayScale(grayScale + 100)
       }
+      setTimeout(() => {
+         navigate("/home/1")
+         click();
+         }, 275);
+      
    }
 
     return (
@@ -72,12 +79,7 @@ export default function SwitchButton(props) {
        <StyledButton 
          position={position} 
          grayScale={grayScale} 
-         onClick={ () => {
-         handleOnClick();
-         setTimeout(() => {
-            click();
-        }, 275);
-         }}>
+         onClick={handleOnClick}>
 
          </StyledButton>
        </>

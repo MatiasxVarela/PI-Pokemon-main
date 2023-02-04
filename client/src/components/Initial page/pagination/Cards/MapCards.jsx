@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import PokemonCard from "./PokemonCard";
+import ErrorCard from "./ErrorCard";
 const CardContainer = styled.div`
     float: top;
     display: flex;
@@ -28,6 +29,12 @@ export default function MapCards() {
                 />
                 )
             }
+        {
+            pokemons.length === 0
+            && <ErrorCard>
+                
+            </ErrorCard>
+        }
         </CardContainer>
     );
  }

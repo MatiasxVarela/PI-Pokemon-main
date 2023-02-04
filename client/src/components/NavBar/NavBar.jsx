@@ -25,6 +25,25 @@ const ImgLogo = styled.img`
     cursor: pointer;
 `;
 
+const StyledButton = styled.button`
+    &:hover {
+        transform: scale(1.1);
+    }
+     font-family: 'OldPokemonFont';
+     font-size: 15px;
+     font-weight: bold;
+     width: 130px;
+     height: 50px;
+     margin: auto 45px auto auto;
+     background-color: rgba(255, 215, 0,9);
+     border: 2px solid rgba(76, 109, 242, 0.9);
+     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.6);
+     border-radius: 8px;
+     transform: translateY(0.5px);
+     transition: transform 0.6s;
+     cursor: pointer;
+`;
+
 export default function NavBar() {
     const navigate = useNavigate()
 
@@ -44,7 +63,7 @@ export default function NavBar() {
     <DivNavBar>
         <ImgLogo src={navLogo} onClick={handleLogoOnClick} alt="A pokemon logo" />
         <SearchBar/>
-        <button onClick={handleFormOnClick}>Buenas</button>
+        <StyledButton onClick={handleFormOnClick}>Create a Pokemon</StyledButton>
         
     </DivNavBar>
     );

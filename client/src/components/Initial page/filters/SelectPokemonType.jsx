@@ -1,6 +1,7 @@
 import React from "react";
 import {  orderPokemonsForType } from "../../../redux/actions/index";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
@@ -24,14 +25,16 @@ const StyledH4 = styled.h4`
 `;
 
 export default function SelectPokemonType() {
+    const navigate = useNavigate()
     const types = useSelector(store => store.types)
     const typesFilter = useSelector(store => store.pokemonsSortValues.types)
     const dispatch = useDispatch()
 
     const handleChange = (event) => {
         setTimeout(() => {
+            navigate("/home/1")
             dispatch(orderPokemonsForType(event.target.value))
-        }, 125);
+        }, 75);
     }
 
     return (

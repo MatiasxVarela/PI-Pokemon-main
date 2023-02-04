@@ -48,16 +48,18 @@ export default function ImageForm(props) {
     const setFormComplete = props.setFormComplete
     const formInfo = props.formInfo
     const [ inputValue, setInputValue ] = useState("")
-    let [ isAImage, setIsAImage ] = useState(null)
-    const regex = /^(https?:\/\/).*\.(png|jpg)$/
+    const [ isAImage, setIsAImage ] = useState(null)
 
     const handleOnChange = (event) => {
-        setInputValue(event.target.value)
-        if (regex.test(event.target.value)) {
-          setIsAImage(true)
-        } else {
-          setIsAImage(false)
-        }
+        const image = new Image()
+        image.src = event.target.value
+        image.onload = function() {
+            setInputValue(event.target.value)
+            setIsAImage(true)
+        };
+        image.onerror = function() {
+            setIsAImage(false)
+        };
     }
 
     const nextOnClick = async () => {
@@ -86,7 +88,7 @@ export default function ImageForm(props) {
     {
     isAImage !== null
     && isAImage !== true
-    && <StyledPError>It must be a valid URL of a PNG or JPG image.</StyledPError>
+    && <StyledPError>Keep in mind that it has to be a valid image URL.</StyledPError>
     }
 
     <StyledButtonDiv>

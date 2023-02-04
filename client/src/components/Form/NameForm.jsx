@@ -1,6 +1,7 @@
 import FormButton from "./FormButton";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const H1Styled = styled.h1`
     font-family: 'OldPokemonFont';
@@ -28,12 +29,21 @@ const StyledInput = styled.input`
     transition: transform 0.4s;
 `;
 
+const StyledPError = styled.p`
+    font-family: 'OldPokemonFont';
+    color: rgba(255, 153, 51, 0.83);
+    margin-top: 15px;
+    max-width: 320px;
+`;
+
 export default function FormInput(props) {
+    const pokemons = useSelector(state => state.pokemons)
     const setFormComplete = props.setFormComplete
     const formComplete = props.formComplete
     const actualData = props.actualData
     const formInfo = props.formInfo
     const onChange = props.onChange
+    const thisPokemonExist = pokemons.filter((element) => element.name === formInfo.toLowerCase())
     const [ bottonActive, setBottonActive ] = useState(false)
 
     const nextOnClick = () => {
@@ -44,7 +54,7 @@ export default function FormInput(props) {
     }
 
     useEffect(() => {
-        if (formInfo.length >= 3 && formInfo.length <= 11 ){
+        if (formInfo.length >= 3 && formInfo.length <= 11 && thisPokemonExist.length === 0){
             setBottonActive(true)
         }else {
             setBottonActive(false)
@@ -59,12 +69,16 @@ export default function FormInput(props) {
         {
             formInfo.length > 0 
             && formInfo.length < 3 
-            && <p>Necesitas al menos 3 letras</p>
+            && <StyledPError>It is necessary that the name have at least 3 letters.</StyledPError>
         }
 
         {
             formInfo.length >= 12 
-            && <p>No puedes tener más de 11 letras</p>
+            && <StyledPError>The name cannot have more than 11 letters.</StyledPError>
+        }
+        {
+            thisPokemonExist.length > 0
+            && <StyledPError>This Pokemon's name already exists.</StyledPError> 
         }
         
         {
