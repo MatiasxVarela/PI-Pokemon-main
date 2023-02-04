@@ -34,6 +34,7 @@ export default function PokemonInfo() {
     const url = useRef(null);
 
     useEffect(() => {
+        setPokemon({})
         if (name !== null){
             url.current = `/pokemons?name=${name}`
          } else if (id !== null){
