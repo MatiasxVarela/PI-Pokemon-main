@@ -1,5 +1,5 @@
 /* Defined action types */
-
+import axios from "axios"
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS"
 export const GET_PAGE_ID = "GET_PAGE_ID"
 export const GET_POKEMON_IN_ORDER = "GET_POKEMON_INORDER"
@@ -13,8 +13,8 @@ export const ORDER_POKEMONS_FOR_MAX_ATTACK = "ORDER_POKEMONS_FOR_MAX_ATTACK"
 
 
 export const getAllPokemons = () => async (dispatch) => {
-        const res = await fetch('/pokemons');
-        const data = await res.json();
+        const res = await axios.get('/pokemons');
+        const data = await res.data
         dispatch({
             type: GET_ALL_POKEMONS,
             payload: data
@@ -22,8 +22,8 @@ export const getAllPokemons = () => async (dispatch) => {
 };
 
 export const getPokemonsTypes = () => async (dispatch) => {
-        const res = await fetch('/types');
-        const data = await res.json();
+        const res = await axios.get('/types');
+        const data = await res.data;
         dispatch({
             type: GET_POKEMONS_TYPES,
             payload: data
