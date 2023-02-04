@@ -39,8 +39,6 @@ export default function PokemonInfo() {
          } else if (id !== null){
              url.current = `/pokemons/${id}`
          }
-         axios.get('https://api.example.com/data')
-        .then(response => { setPokemon(response.data)})
         axios.get(url.current)
             .then(response => {setPokemon(response.data);})
       }, [id,name]);
