@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from "react"
+import axios from 'axios';
 import InfoCard from "./InfoCard";
 import styled from 'styled-components';
 import ErrorCard from './ErrorCard';
@@ -38,9 +39,10 @@ export default function PokemonInfo() {
          } else if (id !== null){
              url.current = `/pokemons/${id}`
          }
-        fetch(url.current)
-            .then((response) => response.json())
-            .then((data) => setPokemon(data));
+         axios.get('https://api.example.com/data')
+        .then(response => { setPokemon(response.data)})
+        axios.get(url.current)
+            .then(response => {setPokemon(response.data);})
       }, [id,name]);
 
     return (
