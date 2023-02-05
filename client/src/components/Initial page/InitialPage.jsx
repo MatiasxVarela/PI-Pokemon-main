@@ -11,6 +11,7 @@ const InitialPageDiv = styled.div`
     margin: 4.4vh 0px 0px 0px;
     display: flex;
     min-height: 84.4vh;
+    width: 98vw;
 `;
 
 export default function InitialPage () {

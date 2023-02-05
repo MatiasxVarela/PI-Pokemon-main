@@ -4,10 +4,9 @@ import { useState } from "react";
 import styled from 'styled-components';
 
 const SearchBarDiv = styled.div`
-    display: flex;
-    flex-wrap: wrap;    
+    display: flex;    
     align-items: center;
-    margin: auto 200px auto auto;
+    margin: auto 10vw auto auto;
 `;
 
 const StyledInput = styled.input`

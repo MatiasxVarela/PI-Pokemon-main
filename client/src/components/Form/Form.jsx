@@ -9,8 +9,7 @@ import SpriteForm from "./SpriteForm"
 const BackgroundDiv = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 88.4vh;
+    min-height: 88.4vh;
     width: 100vw;
 `;
 
@@ -20,8 +19,8 @@ const FormDiv = styled.div`
     flex-direction: column;
     height: 590px;
     width: 430px;
+    margin-top: 100px;
     padding: 15px 60px 15px 60px;
-    margin-top: -100px;
     border: 2px solid rgba(255, 215, 0, 0.87);
     background-color: rgba(76, 109, 242, 0.87);
     border-radius: 15px;

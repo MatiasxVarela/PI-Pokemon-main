@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import PokemonCard from "./PokemonCard";
 import ErrorCard from "./ErrorCard";
+
 const CardContainer = styled.div`
-    float: top;
     display: flex;
+    max-width: 79vw;
+    min-width: 79vw;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 `;
 
 export default function MapCards() {
