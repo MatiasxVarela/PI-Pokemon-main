@@ -6,7 +6,7 @@ import { getAllPokemons, getPokemonsInOrder, getPokemonsTypes } from "./redux/ac
 import Home from './components/Home';
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
 import styled from 'styled-components';
 import bgImage from "./img/Bg.png"
@@ -43,6 +43,7 @@ function App() {
       <Route path="/home/:id" element={<InitialPage></InitialPage>}/>
       <Route path="/pokemon" element={<PokemonInfo/>}/>
       <Route path="/form" element={<Form/>}/>
+      <Route path="/*" element={<Navigate to="/home/1" />}/>
       </Routes>
     </AppDiv>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector} from "react-redux";
 import PageButton from "./PageButton";
 import styled from "styled-components";
+import { Navigate } from "react-router-dom";
 import { goToTop } from "../../../../Util/goToTop";
 
 const CurrentPageButton = styled.button`
@@ -31,11 +32,44 @@ export default function NavigatePageButtons() {
     
     return (
     <div>
-        { pageId > 2 && <PageButton id={1} textButton={"<<"}></PageButton>}
-        { pageId > 1 && <PageButton id={pageId - 1} textButton={pageId - 1}></PageButton>}
+        {
+        pageId < 1 
+        && <Navigate to="/home/1" ></Navigate> 
+        }
+
+        {
+        pageId > LastPage
+        && <Navigate to={`/home/${LastPage}`} ></Navigate> 
+        }
+
+        { 
+        pageId > 2 
+        && <PageButton id={1} textButton={"<<"}></PageButton>
+        }
+
+        { pageId > 1 
+        && <PageButton 
+            id={pageId - 1} 
+            textButton={pageId - 1}
+            ></PageButton>
+        }
+
         <CurrentPageButton onClick={goToTop} >{pageId}</CurrentPageButton>
-        { pageId < LastPage && <PageButton id={pageId + 1} textButton={pageId + 1}></PageButton>}
-        { pageId < (LastPage - 1) && <PageButton id={LastPage} textButton={">>"}></PageButton>}
+
+        {
+        pageId < LastPage 
+        && <PageButton
+            id={pageId + 1} 
+            textButton={pageId + 1}
+            ></PageButton>
+        }
+
+        { pageId < (LastPage - 1) 
+        && <PageButton 
+            id={LastPage} 
+            textButton={">>"}
+            ></PageButton>
+        }
     </div>
     );
  }
