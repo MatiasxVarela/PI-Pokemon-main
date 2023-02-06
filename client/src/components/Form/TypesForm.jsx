@@ -131,7 +131,7 @@ export default function TypesForm(props) {
         <StyledH3>First type:</StyledH3>
 
         <StyledSelect onChange={firstTypeHandleChange}>
-        <option value="None" >None</option>
+        {allTypes.type1 === "" && <option value="None" >None</option>}
             {
                 types.length > 0 && types.map(
                     (type) => 
