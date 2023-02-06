@@ -6,8 +6,9 @@ import ErrorCard from "./ErrorCard";
 
 const CardContainer = styled.div`
     display: flex;
-    max-width: 1920px;
-    min-width: 500px;
+    max-width: 72vw;
+    width: 72vw;
+    margin-left: 50px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -19,18 +20,19 @@ export default function MapCards() {
     return (
         <CardContainer>
         {
-        pokemons.length !== 0 
-        && pokemons.slice(((id - 1) * 12), (id * 12)).map(
-            (pokemon) => 
-            <PokemonCard 
-                id={pokemon.id}
-                key={pokemon.id} 
-                attack={pokemon.attack}
-                name={pokemon.name} 
-                sprite={pokemon.sprite} 
-                pokemonTypes={pokemon.pokemonTypes} 
-            />)
-        }
+            pokemons.length !== 0 
+            && pokemons.slice(((id - 1) * 12), (id * 12)).map(
+               (pokemon) => 
+                <PokemonCard 
+                    id={pokemon.id}
+                    key={pokemon.id} 
+                    attack={pokemon.attack}
+                    name={pokemon.name} 
+                    sprite={pokemon.sprite} 
+                    pokemonTypes={pokemon.pokemonTypes} 
+                />
+                )
+            }
         {
         pokemons.length === 0
         && <ErrorCard/>
