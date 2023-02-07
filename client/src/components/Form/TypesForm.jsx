@@ -170,7 +170,7 @@ export default function TypesForm(props) {
 
         {
         firstTypeState === true 
-        && <StyledH3> I dont want second type:</StyledH3> 
+        && <StyledH3>I don't want to put a second type.</StyledH3> 
         }
         
         {
