@@ -10,7 +10,6 @@ const BackgroundDiv = styled.div`
     display: flex;
     justify-content: center;
     min-height: 88.4vh;
-    width: 100vw;
 `;
 
 const FormDiv = styled.div`
