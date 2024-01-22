@@ -6,8 +6,6 @@ import ErrorCard from "./ErrorCard";
 
 const CardContainer = styled.div`
     display: flex;
-    max-width: 72vw;
-    width: 72vw;
     margin-left: 50px;
     flex-wrap: wrap;
     justify-content: center;
