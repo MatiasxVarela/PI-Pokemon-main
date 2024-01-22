@@ -1,6 +1,3 @@
-* {
-  border: 1px solid red;
-}
 @font-face {
   font-family: 'OldPokemonFont';
   src: url('./fonts/PokemonFont.ttf') format('truetype');

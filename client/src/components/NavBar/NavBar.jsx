@@ -33,6 +33,8 @@ const StyledButton = styled.button`
      font-size: 15px;
      font-weight: bold;
      width: 130px;
+     max-width: 130px;
+     min-width: 130px;
      height: 50px;
      margin: auto 45px auto auto;
      background-color: rgba(255, 215, 0,9);

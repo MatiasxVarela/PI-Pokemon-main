@@ -7,7 +7,7 @@ const HomeDiv = styled.div`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 `;
 
 const StyledButton = styled.button`

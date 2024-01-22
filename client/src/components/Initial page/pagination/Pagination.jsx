@@ -9,6 +9,7 @@ const DivStyled = styled.div`
     max-width: 1500px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 `;
 
 export default function Pagination() {
