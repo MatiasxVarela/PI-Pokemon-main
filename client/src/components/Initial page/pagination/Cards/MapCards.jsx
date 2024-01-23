@@ -10,6 +10,9 @@ const CardContainer = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    @media (max-width: 600px) {
+        margin: 0px 0px 0px 0px;
+    }
 `;
 
 export default function MapCards() {

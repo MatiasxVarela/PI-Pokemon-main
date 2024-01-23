@@ -12,8 +12,8 @@ const CurrentPageButton = styled.button`
         transform: scale(1.30);
     }
     font-family: 'OldPokemonFont';
-    width: 2.25vw;
-    height: 3.5vh;
+    width: 40px;
+    height: 40px;
     margin: 10px 5px 20px 5px;
     border: none;
     background-color: rgba(76, 109, 242, 0.9);

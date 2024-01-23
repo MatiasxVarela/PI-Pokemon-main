@@ -18,6 +18,10 @@ const FiltersDiv = styled.div`
     background-color: rgba(76, 109, 242, 0.83);
     box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.6);
     border-radius: 15px;
+    @media (max-width: 600px) {
+    display: none;
+    margin: 0px;
+    }
 `;
 
 const StyledH2 = styled.h2`

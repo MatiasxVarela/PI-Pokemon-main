@@ -14,6 +14,9 @@ const DivNavBar = styled.div`
     box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.6);
     border-width: 0px 0px 2px 0px;
     border-radius: 0px 0px 5px 5px;
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 const ImgLogo = styled.img`
@@ -49,13 +52,13 @@ const StyledButton = styled.button`
 export default function NavBar() {
     const navigate = useNavigate()
 
-    const handleLogoOnClick = () => {
+    const logoOnClick = () => {
         setTimeout(() => {
             navigate("/home/1")
         }, 85);
     }
 
-    const handleFormOnClick = () => {
+    const formOnClick = () => {
         setTimeout(() => {
             navigate("/form")
         }, 85);
@@ -63,9 +66,9 @@ export default function NavBar() {
 
     return (
     <DivNavBar>
-        <ImgLogo src={navLogo} onClick={handleLogoOnClick} alt="A pokemon logo" />
+        <ImgLogo src={navLogo} onClick={logoOnClick} alt="A pokemon logo" />
         <SearchBar/>
-        <StyledButton onClick={handleFormOnClick}>Create a Pokemon</StyledButton>
+        <StyledButton onClick={formOnClick}>Create a Pokemon</StyledButton>
         
     </DivNavBar>
     );
