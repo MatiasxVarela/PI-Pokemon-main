@@ -12,8 +12,8 @@ import styled from 'styled-components';
 import bgImage from "./img/Bg.png"
 import Form from './components/Form/Form';
 
-/* axios.defaults.baseURL = 'https://mxvpokemonpi.fly.dev/' */
-axios.defaults.baseURL = 'http://localhost:3001/'
+axios.defaults.baseURL = 'https://mxvpokemonpi.fly.dev/'
+/* axios.defaults.baseURL = 'http://localhost:3001/' */
 
 const AppDiv = styled.div`
     background-image: url("${bgImage}");
