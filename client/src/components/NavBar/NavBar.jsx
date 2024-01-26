@@ -9,11 +9,14 @@ const DivNavBar = styled.div`
     justify-content: space-between;
     padding-top: 5px;
     height: 110px;
+    width: 100%;
     border: solid #FFD700;
     background-color: #4C6DF2;
     box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.6);
     border-width: 0px 0px 2px 0px;
     border-radius: 0px 0px 5px 5px;
+    @media (max-width: 600px) {
+    }
 `;
 
 const ImgLogo = styled.img`
@@ -23,6 +26,9 @@ const ImgLogo = styled.img`
     object-position: bottom;
     margin: 5px 0px 0px 125px;
     cursor: pointer;
+    @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 const StyledButton = styled.button`
@@ -33,6 +39,8 @@ const StyledButton = styled.button`
      font-size: 15px;
      font-weight: bold;
      width: 130px;
+     max-width: 130px;
+     min-width: 130px;
      height: 50px;
      margin: auto 45px auto auto;
      background-color: rgba(255, 215, 0,9);
@@ -42,18 +50,21 @@ const StyledButton = styled.button`
      transform: translateY(0.5px);
      transition: transform 0.6s;
      cursor: pointer;
+     @media (max-width: 600px) {
+        display: none;
+    }
 `;
 
 export default function NavBar() {
     const navigate = useNavigate()
 
-    const handleLogoOnClick = () => {
+    const logoOnClick = () => {
         setTimeout(() => {
             navigate("/home/1")
         }, 85);
     }
 
-    const handleFormOnClick = () => {
+    const formOnClick = () => {
         setTimeout(() => {
             navigate("/form")
         }, 85);
@@ -61,9 +72,9 @@ export default function NavBar() {
 
     return (
     <DivNavBar>
-        <ImgLogo src={navLogo} onClick={handleLogoOnClick} alt="A pokemon logo" />
+        <ImgLogo src={navLogo} onClick={logoOnClick} alt="A pokemon logo" />
         <SearchBar/>
-        <StyledButton onClick={handleFormOnClick}>Create a Pokemon</StyledButton>
+        <StyledButton onClick={formOnClick}>Create a Pokemon</StyledButton>
         
     </DivNavBar>
     );

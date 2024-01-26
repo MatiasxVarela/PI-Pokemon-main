@@ -19,6 +19,7 @@ const AppDiv = styled.div`
     background-image: url("${bgImage}");
     background-size: cover;
     background-repeat: no-repeat;
+    width: 100%;
 `;
 
 function App() {

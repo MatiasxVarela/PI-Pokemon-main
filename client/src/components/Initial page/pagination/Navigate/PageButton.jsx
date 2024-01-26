@@ -10,8 +10,8 @@ const StyledButton =  styled.button`
         transform: scale(1.15);
     }
     font-family: 'OldPokemonFont';
-    width: 2.25vw;
-    height: 3.5vh;
+    width: 40px;
+    height: 40px;
     margin: 10px 5px 20px 5px;
     background-color: rgba(255, 215, 0,9);
     border: 2px solid rgba(76, 109, 242, 0.9);

@@ -6,12 +6,13 @@ import ErrorCard from "./ErrorCard";
 
 const CardContainer = styled.div`
     display: flex;
-    max-width: 72vw;
-    width: 72vw;
     margin-left: 50px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    @media (max-width: 600px) {
+        margin: 0px 0px 0px 0px;
+    }
 `;
 
 export default function MapCards() {
