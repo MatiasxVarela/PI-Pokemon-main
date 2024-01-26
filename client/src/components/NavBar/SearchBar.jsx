@@ -25,6 +25,9 @@ const StyledInput = styled.input`
     box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     transition: transform 0.4s;
+    @media (max-width: 600px) {
+        width: 200px;
+    }
 `;
 
 const StyledButton = styled.button`
