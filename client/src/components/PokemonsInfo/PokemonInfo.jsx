@@ -22,6 +22,12 @@ const DivCardStyled = styled.div`
     box-shadow: 16px 16px 40px rgba(0, 0, 0, 0.7);
     border-radius: 15px;
     margin-bottom: 8vh;
+    @media (max-width: 600px) {
+        max-width: 80%;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: 620px;
+    }
 `
 
 export default function PokemonInfo() {

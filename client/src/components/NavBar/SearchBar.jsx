@@ -28,6 +28,7 @@ const StyledInput = styled.input`
     @media (max-width: 600px) {
         width: 200px;
     }
+    
 `;
 
 const StyledButton = styled.button`
@@ -47,6 +48,11 @@ const StyledButton = styled.button`
      transform: translateY(0.5px);
      transition: transform 0.6s;
      cursor: pointer;
+     @media (max-width: 600px) {
+        &:hover {
+            transform: none;
+        }
+    }
 `;
 
 export default function SearchBar() {
